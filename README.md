@@ -26,12 +26,6 @@ It builds the core components of the Transformer architecture step by step, with
 | `main.py`               | Training and evaluation driver script |
 | `LICENSE`               | Repository license                    |
 
-## Requirements
-
-* Python 3.x
-* PyTorch
-* NumPy
-
 ## Paper Reference
 
 “Attention Is All You Need” — Vaswani et al., 2017
