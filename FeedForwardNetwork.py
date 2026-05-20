@@ -12,12 +12,11 @@ class FeedForwardNetwork(nn.Module): # Inheriting all functionalities required t
         self.fc1 = nn.Linear(model_dim, ff_dim)
         self.fc2 = nn.Linear(ff_dim, model_dim)
         
-        # Defining the relu activation function: it introduces non-linearity to the model
-        self.relu = nn.ReLU()
-        
+        # GELU gives smoother gradients near zero than ReLU, reducing dead neurons
+        self.activation = nn.GELU()
+
     def forward(self, x):
-        # Applying the first fully connected layer and the relu activation function
-        x = self.relu(self.fc1(x))
+        x = self.activation(self.fc1(x))
         
         # Applying the second fully connected layer
         x = self.fc2(x)
