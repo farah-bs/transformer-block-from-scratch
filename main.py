@@ -1,16 +1,18 @@
-# creating an instance of the transformer model
+import torch
+from TransformerBlock import TransformerBlock
 
-import Transformer as Transformer
-
-src_vocab_size = 100
-tgt_vocab_size = 100
+batch_size = 2
+seq_len = 10
 model_dim = 512
 num_heads = 8
-num_layers = 6
 ff_dim = 2048
-max_seq_len = 100
-dropout = 0.1
 
-model = Transformer(src_vocab_size, tgt_vocab_size, model_dim, num_heads, num_layers, ff_dim, max_seq_len, dropout)
+block = TransformerBlock(model_dim=model_dim, num_heads=num_heads, ff_dim=ff_dim)
 
-print(model.state_dict())
+x = torch.randn(batch_size, seq_len, model_dim)
+out = block(x)
+
+assert out.shape == x.shape, f"Shape mismatch: expected {x.shape}, got {out.shape}"
+print(f"Input shape:  {x.shape}")
+print(f"Output shape: {out.shape}")
+print("Test passed.")
