@@ -1,0 +1,18 @@
+[project]
+name = "transformer-from-scratch"
+author = "Farah BEN SLAMA"
+version = "0.1.0"
+description = "A single Transformer block implemented from scratch in PyTorch."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "numpy",
+    "torch",
+]
+
+[tool.uv]
+package = false
+
+[build-system]
+requires = ["uv_build>=0.10.4,<0.11.0"]
+build-backend = "uv_build"
